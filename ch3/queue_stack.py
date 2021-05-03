@@ -11,7 +11,7 @@ class Queue:
         self.first = None
         self.last = None
     
-    def add(self, node):
+    def push(self, node):
         if self.first is None:
             self.first = node
             self.last = node
@@ -43,11 +43,11 @@ class Stack:
     def __init__(self):
         self.head = None
 
-    def add(self,node):
+    def push(self,node):
         if self.head is None:
             self.head = node
         else:
-            self.head.next = self.head
+            node.next = self.head
             self.head = node
         
     def pop(self):
