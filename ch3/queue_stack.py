@@ -30,10 +30,34 @@ class Queue:
                 self.first = self.first.next
         return data
 
-
     def __repr__(self):
         nodes = []
         pointer = self.first
+        while pointer is not None:
+            nodes.append(str(pointer))
+            nodes.append("-->")
+            pointer = pointer.next
+        return "".join(nodes)
+
+class Stack:
+    def __init__(self):
+        self.head = None
+
+    def add(self,node):
+        if self.head is None:
+            self.head = node
+        else:
+            self.head.next = self.head
+            self.head = node
+        
+    def pop(self):
+        data = self.head
+        self.head = self.head.next
+        return data
+
+    def __repr__(self):
+        nodes = []
+        pointer = self.head
         while pointer is not None:
             nodes.append(str(pointer))
             nodes.append("-->")
