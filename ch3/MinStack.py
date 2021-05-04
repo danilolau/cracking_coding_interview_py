@@ -1,4 +1,4 @@
-from queue_stack import Node, Stack, Queue
+from queue_stack import Node, Stack
 
 class MinStack(Stack):
     def __init__(self):
