@@ -33,6 +33,7 @@ class Queue:
     def __repr__(self):
         nodes = []
         pointer = self.first
+        nodes.append("-->")
         while pointer is not None:
             nodes.append(str(pointer))
             nodes.append("-->")
@@ -52,12 +53,21 @@ class Stack:
         
     def pop(self):
         data = self.head
-        self.head = self.head.next
+        if data is not None:
+            self.head = self.head.next
+            data.next = None
         return data
+
+    def is_empty(self):
+        is_empty = False
+        if self.head is None:
+            is_empty = True
+        return is_empty
 
     def __repr__(self):
         nodes = []
         pointer = self.head
+        nodes.append("-->")
         while pointer is not None:
             nodes.append(str(pointer))
             nodes.append("-->")
