@@ -1,5 +1,5 @@
-from std_queue import Queue
 import random
+from .queue import Queue
 
 class Graph:
     class Node:
@@ -91,63 +91,10 @@ class Graph:
                     queue.push(c)
         return (False,"")
 
-    def search_bfs_bi(self,a,b):
-        if a == b:
-            return (True,str(a) + "=" + str(b))
-        dict_path_a = {}
-        dict_path_b = {}
-        queue_a = Queue()
-        queue_b = Queue()
-        queue_a.push(self.__table[a])
-        queue_b.push(self.__table[b])
-        dict_path_a[a] = str(a) + "->"
-        dict_path_b[b] = "<-" + str(b)
-        while(not (queue_a.is_empty() and queue_b.is_empty())):
-            node_a = queue_a.pop()
-            node_b = queue_b.pop()
-            if node_a is not None:
-                for c in node_a.children:
-                    path_a = dict_path_a.get(c.value,None)
-                    if path_a is None:
-                        dict_path_a[c.value] = dict_path_a[node_a.value] + str(c) + "->"
-                        visited = dict_path_b.get(c.value,None)
-                        if visited is not None:
-                            path = dict_path_a[c.value] + visited
-                            return (True,path)
-                        queue_a.push(c)
-            if node_b is not None:
-                for c in node_b.children:
-                    path_b = dict_path_b.get(c.value,None)
-                    if path_b is None:
-                        dict_path_b[c.value] = "<-" + str(c) + dict_path_b[node_b.value]
-                        visited = dict_path_a.get(c.value,None)
-                        if visited is not None:
-                            path = visited + dict_path_b[c.value]
-                            return (True,path)
-                        queue_b.push(c)
-        return (False,"")
-
-
     def __repr__(self):
         nodes = []
         for item in self.__table.values():
             nodes.append(str(item) + " --> " + str(item.children) + "\n")
         return "".join(nodes)
 
-graph_test = Graph()
-graph_test.add_path(0,1,1)
-graph_test.add_path(0,4,1)
-graph_test.add_path(0,5,1)
-graph_test.add_path(1,4,1)
-graph_test.add_path(1,3,1)
-graph_test.add_path(3,2,1)
-graph_test.add_path(3,4,1)
-graph_test.add_path(2,1,1)
-
-for i in range(30):
-    a = random.choice([0,1,2,3,4,5])
-    b = random.choice([0,1,2,3,4,5])
-    print("Search path from {} to {}".format(a,b))
-    print(graph_test.search_bfs(a,b))
-    print(graph_test.search_dfs(a,b))
 
