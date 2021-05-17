@@ -1,4 +1,4 @@
-from linkedlist import Node, LinkedList
+from structs.linkedlist import Node, LinkedList
 import random
 
 def gen_loop(ll=LinkedList()):

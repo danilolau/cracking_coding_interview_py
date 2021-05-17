@@ -10,6 +10,9 @@ class Graph:
         def add_child(self,node):
             self.children.append(node)
 
+        def __eq__(self, other: object) -> bool:
+            return self.value == other.value
+
         def __hash__(self):
             return hash(self.value)
 

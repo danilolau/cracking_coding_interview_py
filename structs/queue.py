@@ -40,9 +40,9 @@ class Queue:
     def __repr__(self):
         nodes = []
         pointer = self.first
-        nodes.append("-->")
+        nodes.append("->")
         while pointer is not None:
             nodes.append(str(pointer))
-            nodes.append("-->")
+            nodes.append("->")
             pointer = pointer.next
         return "".join(nodes)

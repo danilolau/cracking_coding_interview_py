@@ -1,4 +1,4 @@
-from linkedlist import LinkedList, Node
+from structs.linkedlist import LinkedList, Node
 
 def delete_middle_node(ll):
     middle = ll.head

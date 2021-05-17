@@ -1,4 +1,4 @@
-from linkedlist import Node, DoublyLinkedList
+from structs.linkedlist import Node, DoublyLinkedList
 
 def palindrome(ll=DoublyLinkedList()):
 

@@ -1,4 +1,4 @@
-from linkedlist import LinkedList, DoublyLinkedList, Node
+from structs.linkedlist import LinkedList, DoublyLinkedList, Node
 
 def remove_dubs(ll):
     

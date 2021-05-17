@@ -1,4 +1,4 @@
-from linkedlist import Node, LinkedList
+from structs.linkedlist import Node, LinkedList
 
 def kth_last(k,ll):
     pointer = ll.head

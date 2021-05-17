@@ -8,9 +8,21 @@ class Node:
         return str(self.value)
 
 class LinkedList:
+    class Node:
+        def __init__(self, value):
+            self.value = value
+            self.next = None
+            
+        def __repr__(self):
+            return str(self.value)
+
     def __init__(self, node=None):
         self.head = node
         self.tail = node
+
+    def append(self, value):
+        node = self.Node(value)
+        self.append_to_tail(node)
         
     def append_to_tail(self,node):
         if self.head is None:
@@ -22,7 +34,7 @@ class LinkedList:
         
     def append_list_to_tail(self,values):
         for value in values:
-            self.append_to_tail(Node(value))
+            self.append(value)
         
     def remove_by_val(self,value):
         if self.head.value == value:

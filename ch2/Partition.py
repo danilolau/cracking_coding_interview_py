@@ -1,4 +1,4 @@
-from linkedlist import Node, LinkedList
+from structs.linkedlist import Node, LinkedList
 
 def partition(k,ll):
     rll = LinkedList()

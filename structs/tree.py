@@ -11,8 +11,14 @@ class BinarySearchTree:
         def __repr__(self) -> str:
             return str(self.item)
 
-    def __init__(self, root=None) -> None:
-        self.root = self.Node(root)
+        def __eq__(self, other) -> bool:
+            return self.item == other.item
+
+        def __hash__(self) -> int:
+            return hash(self.item)
+
+    def __init__(self) -> None:
+        self.root = None
     
     def add_node(self,item):
         node = self.Node(item)
@@ -35,34 +41,61 @@ class BinarySearchTree:
             else:
                 self.__add_node(parent.right_child,node)
 
-    def min_node(self,node):
+    def add_random(self, item):
+        child = self.Node(item)
+        if self.root is None:
+            self.root = child
+        else:
+            self.__add_random(self.root,child)
+
+    def __add_random(self, node: Node, child: Node):
+        if node.left_child is None:
+            node.left_child = child
+            child.parent = node
+        elif node.right_child is None:
+            node.right_child = child
+            child = node
+        else:
+            c = random.choice([0,1])
+            if c == 0:
+                self.__add_random(node.left_child,child)
+            else:
+                self.__add_random(node.right_child,child)
+
+    def find(self, item):
+        pass
+
+    def successor(self, node: Node):
+        if node.right_child is not None:
+            return self.min_node(node.right_child)
+        elif node.left_child is not None:
+            return self.max_node(node.left_child)
+        else:
+            return None
+        
+
+    def min_node(self,node: Node):
         if node.left_child is None:
             return node
         else:
             return self.min_node(node.left_child)
     
-    def max_node(self,node):
+    def max_node(self,node: Node):
         if node.right_child is None:
             return node
         else:
             return self.max_node(node.right_child)
 
-    def __print_tree(self, node):
+    def print_tree(self, node, level):
         if node is None:
             return "[ ]"
         else:
-            left_str = self.__print_tree(node.left_child)
-            right_str = self.__print_tree(node.right_child)
-            return "{" + left_str + "-" + str(node) + "-" + right_str + "}"
+            left_str = self.print_tree(node.left_child, level + 1)
+            right_str = self.print_tree(node.right_child, level + 1)
+            node_str = str(node) + "\n" + level*"\t" + left_str + "\n" + level*"\t" + right_str
+            return node_str
         
     def __str__(self) -> str:
-        return self.__print_tree(self.root)
+        return self.print_tree(self.root,1)
 
-tree = BinarySearchTree(500)
-
-for i in range(20):
-    item = random.randint(0,1000)
-    tree.add_node(item)
-
-print(tree)
 
