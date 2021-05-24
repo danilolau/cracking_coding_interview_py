@@ -55,6 +55,9 @@ class Graph:
     def get_node(self,value):
         return self.__table.get(value,None)
 
+    def get_table(self):
+        return self.__table
+
     def search_dfs(self,a,b):
         node = self.get_node(a)
         path = []

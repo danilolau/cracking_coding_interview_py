@@ -14,6 +14,21 @@ class BinarySearchTree:
         def __eq__(self, other) -> bool:
             return self.item == other.item
 
+        def __ne__(self, other) -> bool:
+            return self.item != other.item
+
+        def __gt__(self,other) -> bool:
+            return self.item > other.item
+
+        def __ge__(self, other) -> bool:
+            return self.item >= other.item
+
+        def __lt__(self,other) -> bool:
+            return self.item < other.item
+        
+        def __le__(self,other) -> bool:
+            return self.item <= other.item
+
         def __hash__(self) -> int:
             return hash(self.item)
 
@@ -54,7 +69,7 @@ class BinarySearchTree:
             child.parent = node
         elif node.right_child is None:
             node.right_child = child
-            child = node
+            child.parent = node
         else:
             c = random.choice([0,1])
             if c == 0:
