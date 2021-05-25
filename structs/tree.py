@@ -34,9 +34,11 @@ class BinarySearchTree:
 
     def __init__(self) -> None:
         self.root = None
+        self.length = 0
     
     def add_node(self,item):
         node = self.Node(item)
+        self.length += 1
         if self.root is None:
             self.root = node
         else:
@@ -55,6 +57,7 @@ class BinarySearchTree:
                 node.parent = parent
             else:
                 self.__add_node(parent.right_child,node)
+
 
     def add_random(self, item):
         child = self.Node(item)
@@ -77,16 +80,60 @@ class BinarySearchTree:
             else:
                 self.__add_random(node.right_child,child)
 
+    def remove(self, item):
+        node = self.find(item)
+        if node is not None:
+            successor = None
+            if node.right_child is not None and node.left_child is not None:
+                successor = self.min_node(node.right_child)
+                print("successor is: {}".format(successor))
+                if successor.right_child is not None:
+                    successor.right_child.parent = successor.parent
+                successor.parent.left_child = successor.right_child
+                successor.parent = node.parent
+                successor.right_child = node.right_child
+                successor.left_child = node.left_child
+            elif node.right_child is not None:
+                successor = node.right_child
+                successor.parent = node.parent
+            elif node.left_child is not None:
+                successor = node.left_child
+                successor.parent = node.parent
+
+            if self.root is node:
+                self.root = successor
+            elif node < node.parent:
+                node.parent.left_child = successor
+            else:
+                node.parent.right_child = successor
+
+            node.parent = None
+            node.left_child = None
+            node.right_child = None
+            self.length -= 1
+        return node
+
+
     def find(self, item):
-        pass
+        found = False
+        node = self.root
+        while not found and node is not None:
+            if node.item == item:
+                found = True
+            elif item < node.item:
+                node = node.left_child
+            elif item > node.item:
+                node = node.right_child
+        return node
+        
 
     def successor(self, node: Node):
-        if node.right_child is not None:
+        if node.left_child is not None and node.right_child is not None:
             return self.min_node(node.right_child)
         elif node.left_child is not None:
-            return self.max_node(node.left_child)
-        else:
-            return None
+            return node.left_child
+        elif node.right_child is not None:
+            return node.right_child
         
 
     def min_node(self,node: Node):
