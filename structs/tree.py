@@ -41,7 +41,7 @@ class BinarySearchTree:
         self.root = None
         self.length = 0
 
-    def get_random_node(self):
+    def get_random_node(self) -> Node:
         count = random.choice(range(self.length))
         elem, count = self.__visit(self.root, count)
         return elem

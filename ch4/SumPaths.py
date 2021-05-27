@@ -39,7 +39,7 @@ def gen_sums(tree: BinarySearchTree):
 
     return sum
 
-ordered_list = random.choices(range(-1000,1000), k = 100)
+ordered_list = random.choices(range(-10,10), k = 15)
 tree = BinarySearchTree()
 
 for elem in ordered_list:

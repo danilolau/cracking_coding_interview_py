@@ -3,9 +3,7 @@ import random
 
 
 ordered_list = random.choices(range(1000), k = 100)
-#ordered_list.sort()
 tree = BinarySearchTree()
-#min_tree(ordered_list, tree)
 
 for elem in ordered_list:
     tree.add_node(elem)
