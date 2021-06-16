@@ -1,4 +1,4 @@
-from queue_stack import Node, Stack
+from .queue_stack import Node, Stack
 import random
 
 class QueueViaStack:

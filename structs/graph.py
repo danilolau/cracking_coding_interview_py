@@ -54,6 +54,7 @@ class Graph:
             node.children = []
             node.parents = []
             self.__table.pop(value)
+        return node
 
     def set_node(self,value):
         node = self.__table.get(value,None)

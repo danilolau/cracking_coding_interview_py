@@ -1,4 +1,4 @@
-from structs.tree import BinarySearchTree
+from ..structs.tree import BinarySearchTree
 import random
 
 def validate_bst(node):

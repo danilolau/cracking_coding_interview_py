@@ -1,5 +1,5 @@
 import random
-from structs.tree import BinarySearchTree
+from ..structs.tree import BinarySearchTree
 
 ordered_list = random.choices(range(1000), k = 31)
 #ordered_list.sort()

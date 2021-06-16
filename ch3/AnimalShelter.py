@@ -1,4 +1,4 @@
-from queue_stack import Queue, Node
+from ..structs.queue import Queue
 import random
 
 class AnimalShelter:
@@ -7,26 +7,26 @@ class AnimalShelter:
         self.__cat_queue = Queue()
         self.__seq = 0
 
-    def enqueue(self,animal = "dog"):
+    def enqueue(self,animal: str = "dog"):
         if animal.lower() == "dog":
-            self.__dog_queue.push(Node(self.__seq))
+            self.__dog_queue.enqueue(self.__seq)
             self.__seq += 1
         elif animal.lower() == "cat":
-            self.__cat_queue.push(Node(self.__seq))
+            self.__cat_queue.enqueue(self.__seq)
             self.__seq += 1
 
     def dequeue_dog(self):
-        return self.__dog_queue.pop()
+        return self.__dog_queue.dequeue()
 
     def dequeue_cat(self):
-        return self.__cat_queue.pop()
+        return self.__cat_queue.dequeue()
 
     def dequeue_any(self):
         data = None
-        if self.__dog_queue.first.value < self.__cat_queue.first.value:
-            data = self.__dog_queue.pop()
+        if self.__dog_queue.first.item < self.__cat_queue.first.item:
+            data = self.__dog_queue.dequeue()
         else:
-            data = self.__cat_queue.pop()
+            data = self.__cat_queue.dequeue()
         return data
 
     def __repr__(self):

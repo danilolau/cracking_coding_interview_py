@@ -1,4 +1,4 @@
-from structs.tree import BinarySearchTree
+from ..structs.tree import BinarySearchTree
 import random
 
 def weave_lists(list_a: list,list_b: list):

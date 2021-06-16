@@ -1,4 +1,4 @@
-from structs.tree import BinarySearchTree
+from ..structs.tree import BinarySearchTree
 import random
 
 def check_path(node: BinarySearchTree.Node, kth_sums: list, paths: list, sum: int):
@@ -39,28 +39,29 @@ def gen_sums(tree: BinarySearchTree):
 
     return sum
 
-ordered_list = random.choices(range(-10,10), k = 15)
-tree = BinarySearchTree()
+if __name__ == "__main__":
+    ordered_list = random.choices(range(-10,10), k = 15)
+    tree = BinarySearchTree()
 
-for elem in ordered_list:
-    tree.add_node(elem)
+    for elem in ordered_list:
+        tree.add_node(elem)
 
-print(tree)
-sum = gen_sums(tree)
-print("for sum {}, this is the path:".format(sum))
-paths = sum_paths(tree,sum)
-print(paths)
-checks = []
-for path in paths:
-    pointer = path[0]
-    count = path[1]
-    check = 0
-    while count >= 0:
-        check += pointer.item
-        pointer = pointer.parent
-        count -= 1
-    checks.append(check)
-print(checks)
+    print(tree)
+    sum = gen_sums(tree)
+    print("for sum {}, this is the path:".format(sum))
+    paths = sum_paths(tree,sum)
+    print(paths)
+    checks = []
+    for path in paths:
+        pointer = path[0]
+        count = path[1]
+        check = 0
+        while count >= 0:
+            check += pointer.item
+            pointer = pointer.parent
+            count -= 1
+        checks.append(check)
+    print(checks)
 
 
 

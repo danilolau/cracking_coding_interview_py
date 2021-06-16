@@ -8,10 +8,10 @@ class Queue:
             return str(self.item)
 
     def __init__(self):
-        self.first = None
-        self.last = None
+        self.first: self.Node = None
+        self.last: self.Node = None
     
-    def push(self, item):
+    def enqueue(self, item):
         node = self.Node(item)
         if self.first is None:
             self.first = node
@@ -20,7 +20,7 @@ class Queue:
             self.last.next = node
             self.last = node
 
-    def pop(self):
+    def dequeue(self):
         data = None
         if self.first is not None:
             data = self.first.item

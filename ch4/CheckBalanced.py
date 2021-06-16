@@ -1,4 +1,4 @@
-from structs.tree import BinarySearchTree
+from ..structs.tree import BinarySearchTree
 from .MinimalTree import min_tree
 import random
 

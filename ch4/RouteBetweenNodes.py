@@ -1,6 +1,6 @@
 import sys
 import os
-from structs.graph import Graph
+from ..structs.graph import Graph
 
 import random
 

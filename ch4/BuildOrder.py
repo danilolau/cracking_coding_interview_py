@@ -1,4 +1,4 @@
-from structs.graph import Graph
+from ..structs.graph import Graph
 
 def build_order(deps: Graph):
     is_possible = True

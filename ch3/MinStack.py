@@ -1,17 +1,17 @@
-from queue_stack import Node, Stack
+from ..structs.stack import Stack
 
 class MinStack(Stack):
     def __init__(self):
         super().__init__()
         self.minStack = Stack()
     
-    def push(self, node):
-        super().push(node)
+    def push(self, item):
+        super().push(item)
         if self.minStack.head is None:
-            self.minStack.push(Node(node.value))
+            self.minStack.push(item)
         else:
-            min_value = min(node.value,self.minStack.head.value)
-            self.minStack.push(Node(min_value))
+            min_value = min(item,self.minStack.head.item)
+            self.minStack.push(min_value)
 
     def pop(self):
         self.minStack.pop()
@@ -21,15 +21,15 @@ class MinStack(Stack):
         return self.minStack.head
 
 min_stack = MinStack()
-min_stack.push(Node(10))
+min_stack.push(10)
 print(min_stack.min())
-min_stack.push(Node(8))
+min_stack.push(8)
 print(min_stack.min())
-min_stack.push(Node(12))
+min_stack.push(12)
 print(min_stack.min())
-min_stack.push(Node(16))
+min_stack.push(16)
 print(min_stack.min())
-min_stack.push(Node(4))
+min_stack.push(4)
 print(min_stack.min())
 min_stack.pop()
 print(min_stack.min())

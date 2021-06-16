@@ -1,5 +1,5 @@
-from structs.linkedlist import LinkedList
-from structs.tree import BinarySearchTree
+from ..structs.linkedlist import LinkedList
+from ..structs.tree import BinarySearchTree
 import random
 
 def list_of_depths(node, depths,level):

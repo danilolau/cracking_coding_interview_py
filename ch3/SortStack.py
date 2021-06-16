@@ -1,4 +1,4 @@
-from queue_stack import Stack, Node
+from .queue_stack import Stack, Node
 import random
 
 def sort_stack(stack = Stack()):

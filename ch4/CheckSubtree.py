@@ -1,5 +1,5 @@
-from ch4.SumPaths import check_path
-from structs.tree import BinarySearchTree
+from .SumPaths import check_path
+from ..structs.tree import BinarySearchTree
 import random
 
 def cmp_subtree(node_a: BinarySearchTree.Node, node_b: BinarySearchTree.Node):

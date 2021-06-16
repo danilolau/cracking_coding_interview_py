@@ -1,5 +1,5 @@
 import random
-from structs.tree import BinarySearchTree
+from ..structs.tree import BinarySearchTree
 
 def random_at_depth(tree: BinarySearchTree, depth: int):
     if depth < 0:
